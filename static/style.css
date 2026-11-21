@@ -1,0 +1,237 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box; 
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f4f8;
+    color: #1a1a2e;
+}
+
+header {
+    background-color: #1a3a8f;
+    padding: 18px 40px;
+}
+
+.logo {
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.hero {
+    background-color: #1a3a8f;
+    text-align: center;
+    padding: 50px 20px 80px;
+}
+
+.hero h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1rem;
+    opacity: 0.85;
+}
+
+main {
+    max-width: 860px;
+    margin: -50px auto 40px;
+    padding: 0 20px;
+    position: relative;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 32px 28px;
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.input-group {
+    flex: 1;
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    color: #665;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.input-row {
+    display: flex;
+    align-items: center;
+    border: 1px solid #dde3ed;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.input-row input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 14px 12px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #1a1a2e;
+    width: 100%;
+    background: transparent;
+}
+
+.dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 14px;
+    border-left: 1px solid #dde3ed;
+    cursor: pointer;
+    white-space: nowrap;
+    user-select: none;
+    transition: background 0.2s;
+}
+
+.dropdown-trigger:hover {
+    background-color: #f5f7fb;
+}
+
+.dropdown-trigger img {
+    width: 22px;
+    height: 15px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+.dropdown-trigger span{
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1a1a2e;
+}
+
+.arrow {
+    font-size: 1rem;
+    color: #888;
+}
+
+.swap-btn {
+    background: #1a3a8f;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-bottom: 2px;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.swap-btn:hover {
+    background: #142d72;
+    transform: rotate(180deg);
+}
+
+.dropdown {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    border: 1px solid #dde3ed;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    width: 90%;
+    max-width: 340px;
+    z-index: 100;
+    padding: 12px;
+    max-height: 360px;
+    overflow: hidden;
+}
+
+.dropdown.open {
+    display: block;
+}
+
+#search-input {
+     width: 100%;
+     padding: 10px 12px;
+     border: 1px solid #dde3ed;
+     border-radius: 8px;
+     font-size: 0.9rem;
+     outline: none;
+     margin-bottom: 10px;
+}
+
+#currency-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.15s;
+}
+
+#currency-list li:hover {
+    background-color: #f0f4f8;
+}
+
+#currency-list li img {
+    width: 22px;
+    height: 15px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+.rate-info {
+    text-align: center;
+    margin-top: 24px;
+}
+
+#rate-display {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1a1a2e;
+}
+
+#last-updated {
+    font-size: 0.82rem;
+    font-weight: #888;
+    margin-top: 6px;
+}
+
+.disclaimer {
+    text-align: center;
+    font-size: 0.78rem;
+    color: #999;
+    margin-top: 24px;
+    line-height: 1.6;
+    max-height: 640px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 600px) {
+    .card {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .swap-btn {
+        align-self: center;
+        transform: rotate(90deg);
+    }
+    .swap-btn:hover {
+        transform: rotate(270deg);
+    }
+}
