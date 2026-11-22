@@ -2,7 +2,6 @@ import os
 from flask import Flask, jsonify, render_template
 from dotenv import load_dotenv
 import requests
-
 load_dotenv()
 
 app = Flask(__name__)
@@ -21,12 +20,12 @@ def get_rates(base):
         response.raise_for_status()
         data = response.json()
         return jsonify({
-            'base':data['base_code'],
+            'base': data['base_code'],
             'rates': data['conversion_rates'],
             'last_updated': data['time_last_update_utc']
         })
-    except requests.exception.RequestException:
-        return jsonify({'error': 'Failed to fetch rates'}),
+    except requests.exceptions.RequestException:
+        return jsonify({'error': 'Failed to fetch rates'}), 500
 
 @app.route('/api/codes')
 def get_codes():
@@ -34,11 +33,11 @@ def get_codes():
         response = requests.get(f'{BASE_URL}/{API_KEY}/codes')
         response.raise_for_status()
         data = response.json()
-        return jsonify ({
+        return jsonify({
             'codes': data['supported_codes']
         })
     except requests.exceptions.RequestException:
         return jsonify({'error': 'Failed to fetch currency codes'}), 500
 
 if __name__ == '__main__':
-    app.run(debug=False)    
+    app.run(debug=False)

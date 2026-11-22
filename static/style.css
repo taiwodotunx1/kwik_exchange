@@ -1,7 +1,7 @@
 * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -26,6 +26,7 @@ header {
     background-color: #1a3a8f;
     text-align: center;
     padding: 50px 20px 80px;
+    color: #ffffff;
 }
 
 .hero h1 {
@@ -47,7 +48,7 @@ main {
 }
 
 .card {
-    background-color: #ffffff;
+    background: #ffffff;
     border-radius: 16px;
     padding: 32px 28px;
     display: flex;
@@ -62,7 +63,7 @@ main {
 
 .input-group label {
     font-size: 0.85rem;
-    color: #665;
+    color: #666;
     margin-bottom: 8px;
     display: block;
 }
@@ -74,6 +75,7 @@ main {
     border-radius: 10px;
     overflow: hidden;
 }
+
 .input-row input {
     flex: 1;
     border: none;
@@ -109,7 +111,7 @@ main {
     border-radius: 2px;
 }
 
-.dropdown-trigger span{
+.dropdown-trigger span {
     font-size: 0.95rem;
     font-weight: 600;
     color: #1a1a2e;
@@ -139,6 +141,7 @@ main {
     transform: rotate(180deg);
 }
 
+/* Dropdown */
 .dropdown {
     display: none;
     position: fixed;
@@ -162,13 +165,19 @@ main {
 }
 
 #search-input {
-     width: 100%;
-     padding: 10px 12px;
-     border: 1px solid #dde3ed;
-     border-radius: 8px;
-     font-size: 0.9rem;
-     outline: none;
-     margin-bottom: 10px;
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #dde3ed;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+#currency-list {
+    list-style: none;
+    overflow-y: auto;
+    max-height: 280px;
 }
 
 #currency-list li {
@@ -206,7 +215,7 @@ main {
 
 #last-updated {
     font-size: 0.82rem;
-    font-weight: #888;
+    color: #888;
     margin-top: 6px;
 }
 
@@ -216,7 +225,7 @@ main {
     color: #999;
     margin-top: 24px;
     line-height: 1.6;
-    max-height: 640px;
+    max-width: 640px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -231,6 +240,7 @@ main {
         align-self: center;
         transform: rotate(90deg);
     }
+
     .swap-btn:hover {
         transform: rotate(270deg);
     }

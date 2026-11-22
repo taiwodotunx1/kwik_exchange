@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kwik Exchange - Currency Converter</title>
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
+
     <header>
         <div class="logo">Kwik Exchange</div>
     </header>
@@ -18,13 +19,12 @@
 
     <main>
         <div class="card">
-            
             <div class="input-group">
-                <label for="">From</label>
+                <label>From</label>
                 <div class="input-row">
                     <input type="number" id="from-amount" value="1" min="0">
                     <div class="dropdown-trigger" id="from-trigger">
-                        <img src="" id="from-flag" alt="">
+                        <img id="from-flag" src="" alt="">
                         <span id="from-code">USD</span>
                         <span class="arrow">&#8964;</span>
                     </div>
@@ -34,35 +34,37 @@
             <button class="swap-btn" id="swap-btn">⇄</button>
 
             <div class="input-group">
-                <label for="">To</label>
+                <label>To</label>
                 <div class="input-row">
-                    <input type="number" name="" id="to-amount" readonly>
+                    <input type="number" id="to-amount" readonly>
                     <div class="dropdown-trigger" id="to-trigger">
-                        <img src="" id="to-flag" alt="">
+                        <img id="to-flag" src="" alt="">
                         <span id="to-code">EUR</span>
                         <span class="arrow">&#8964;</span>
                     </div>
                 </div>
             </div>
+
         </div>
 
-            <div class="dropdown" id="dropdown">
-                <input type="text" id="search-input" placeholder="Search currencies...">
-                <ul id="currency-list"></ul>
-            </div>
+        <div class="dropdown" id="dropdown">
+            <input type="text" id="search-input" placeholder="Search currencies...">
+            <ul id="currency-list"></ul>
+        </div>
 
-            <div class="rate-info">
-                <p id="rate-display"></p>
-                <p id="last-updated"></p>
-            </div>
-            
-            <p class="disclaimer">
-                &#9432; Exchange rates are sourced from ExchangeRate-API and reflect mid-market rates.
-                Rates are updated every 24 hours and are for informational purposes only.
-                These rates may differ from those offered by banks or money transfer services.
-            </p>
-            
+        <div class="rate-info">
+            <p id="rate-display"></p>
+            <p id="last-updated"></p>
+        </div>
+
+        <p class="disclaimer">
+            &#9432; Exchange rates are sourced from ExchangeRate-API and reflect mid-market rates.
+            Rates are updated every 24 hours and are for informational purposes only.
+            These rates may differ from those offered by banks or money transfer services.
+        </p>
+
     </main>
+
     <script src="/static/script.js"></script>
 </body>
 </html>

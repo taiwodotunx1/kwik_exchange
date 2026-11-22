@@ -1,13 +1,11 @@
 const BASE_URL = '';
 
-// State
 let rates = {};
 let currencyNames = {};
 let fromCurrency = 'USD';
 let toCurrency = 'EUR';
 let activeDropdown = null;
 
-// DOM Elements
 const fromAmount = document.getElementById('from-amount');
 const toAmount = document.getElementById('to-amount');
 const fromCode = document.getElementById('from-code');
@@ -24,13 +22,13 @@ const rateDisplay = document.getElementById('rate-display');
 const lastUpdated = document.getElementById('last-updated');
 const heroTitle = document.getElementById('hero-title');
 
-// Get flag image URL from flagcdn
+
 function getFlagUrl(currencyCode) {
     const countryCode = currencyCode.slice(0, 2).toLowerCase();
     return `https://flagcdn.com/16x12/${countryCode}.png`;
 }
 
-// Fetch currency codes and names
+
 async function fetchCodes() {
     try {
         const response = await fetch('/api/codes');
@@ -44,7 +42,7 @@ async function fetchCodes() {
     }
 }
 
-// Fetch rates from API
+
 async function fetchRates(base) {
     try {
         const response = await fetch(`/api/rates/${base}`);
@@ -61,7 +59,6 @@ async function fetchRates(base) {
     }
 }
 
-// Convert amount
 function convert() {
     const amount = parseFloat(fromAmount.value);
     if (isNaN(amount) || amount < 0) {
@@ -72,20 +69,17 @@ function convert() {
     toAmount.value = (amount * rate).toFixed(2);
 }
 
-// Update rate display
 function updateRateDisplay() {
     const rate = rates[toCurrency];
     rateDisplay.textContent = `1 ${fromCurrency} = ${rate.toFixed(4)} ${toCurrency}`;
 }
 
-// Update hero title
 function updateHeroTitle() {
     const fromName = currencyNames[fromCurrency] || fromCurrency;
     const toName = currencyNames[toCurrency] || toCurrency;
     heroTitle.textContent = `${fromAmount.value} ${fromCurrency} to ${toCurrency} - Convert ${fromName} to ${toName}`;
 }
 
-// Update last updated timestamp
 function updateLastUpdated(utcString) {
     const date = new Date(utcString);
     const formatted = date.toLocaleString('en-GB', {
@@ -95,7 +89,6 @@ function updateLastUpdated(utcString) {
     lastUpdated.textContent = `Last updated: ${formatted}`;
 }
 
-// Update flag and code display
 function updateDisplay() {
     fromCode.textContent = fromCurrency;
     toCode.textContent = toCurrency;
@@ -105,7 +98,6 @@ function updateDisplay() {
     toFlag.alt = toCurrency;
 }
 
-// Populate dropdown list
 function populateList(filter = '') {
     currencyList.innerHTML = '';
     const allCurrencies = Object.keys(rates);
@@ -165,7 +157,7 @@ function closeDropdown() {
     activeDropdown = null;
 }
 
-// Event listeners
+
 fromTrigger.addEventListener('click', (e) => {
     e.stopPropagation();
     activeDropdown === 'from' ? closeDropdown() : openDropdown('from');
