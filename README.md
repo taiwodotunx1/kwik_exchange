@@ -104,9 +104,9 @@ http://127.0.0.1:5000
 The app is deployed across two web servers behind a load balancer.
 
 ### Infrastructure
-- **web-01:** `18.170.34.3`
-- **web-02:** `3.10.143.237`
-- **lb-01 (HAProxy):** `35.176.46.223`
+- **web-01:** `13.40.123.248`
+- **web-02:** `3.8.49.201`
+- **lb-01 (HAProxy):** `18.169.188.222`
 
 ### Steps (per server)
 
