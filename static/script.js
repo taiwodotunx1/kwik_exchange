@@ -1,5 +1,3 @@
-const BASE_URL = '';
-
 let rates = {};
 let currencyNames = {};
 let fromCurrency = 'USD';
@@ -21,7 +19,36 @@ const currencyList = document.getElementById('currency-list');
 const rateDisplay = document.getElementById('rate-display');
 const lastUpdated = document.getElementById('last-updated');
 const heroTitle = document.getElementById('hero-title');
+const loaderPercent = document.getElementById('loader-percent');
+const loaderBar = document.getElementById('loader-bar');
+const loaderScreen = document.getElementById('loader-screen');
+const launchBtn = document.getElementById('launch-btn');
+const ratesBody = document.getElementById('rates-body');
+const ratesSearch = document.getElementById('rates-search');
+const sortNameBtn = document.getElementById('sort-name');
+const sortRateBtn = document.getElementById('sort-rate');
+const ratesBaseLabel = document.getElementById('rates-base-label');
 
+let progress = 0;
+
+const loadInterval = setInterval(() => {
+    progress += Math.random() * 15;
+    if (progress >= 100) {
+        progress = 100;
+        clearInterval(loadInterval);
+        loaderBar.style.width = '100%';
+        loaderPercent.textContent = '100%';
+        setTimeout(() => {
+            launchBtn.style.display = 'block';
+        }, 400);
+    }
+    loaderBar.style.width = progress + '%';
+    loaderPercent.textContent = Math.floor(progress) + '%';
+}, 200);
+
+launchBtn.addEventListener('click', () => {
+    loaderScreen.classList.add('hidden');
+});
 
 function getFlagUrl(currencyCode) {
     const countryCode = currencyCode.slice(0, 2).toLowerCase();
@@ -53,6 +80,7 @@ async function fetchRates(base) {
         convert();
         updateRateDisplay();
         updateHeroTitle();
+        populateRatesTable();
     } catch (error) {
         rateDisplay.textContent = 'Failed to load rates. Please try again later.';
         rateDisplay.style.color = 'red';
@@ -66,7 +94,10 @@ function convert() {
         return;
     }
     const rate = rates[toCurrency];
-    toAmount.value = (amount * rate).toFixed(2);
+    toAmount.value = (amount * rate).toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
 }
 
 function updateRateDisplay() {
@@ -183,6 +214,58 @@ swapBtn.addEventListener('click', () => {
     [fromCurrency, toCurrency] = [toCurrency, fromCurrency];
     updateDisplay();
     fetchRates(fromCurrency);
+});
+
+let sortOrder = { name: null, rate: null };
+
+function populateRatesTable(filter = '') {
+    ratesBody.innerHTML = '';
+    ratesBaseLabel.textContent = `from ${fromCurrency}`;
+
+    let entries = Object.entries(rates).filter(([code]) => {
+        const name = currencyNames[code] || '';
+        return (
+            code.toLowerCase().includes(filter.toLowerCase()) ||
+            name.toLowerCase().includes(filter.toLowerCase())
+        );
+    });
+
+    if (sortOrder.name === 'asc') entries.sort((a, b) => a[0].localeCompare(b[0]));
+    else if (sortOrder.name === 'desc') entries.sort((a, b) => b[0].localeCompare(a[0]));
+    else if (sortOrder.rate === 'asc') entries.sort((a, b) => a[1] - b[1]);
+    else if (sortOrder.rate === 'desc') entries.sort((a, b) => b[1] - a[1]);
+
+    entries.forEach(([code, rate]) => {
+        const name = currencyNames[code] || code;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>
+                <img src="${getFlagUrl(code)}" alt="${code}" style="width:22px;height:15px;border-radius:2px;">
+                ${code}
+            </td>
+            <td>${name}</td>
+            <td>${rate.toLocaleString('en-US', { minimumFractionDigits: 4, maximumFractionDigits: 4 })}</td>
+        `;
+        ratesBody.appendChild(tr);
+    });
+}
+
+ratesSearch.addEventListener('input', () => populateRatesTable(ratesSearch.value));
+
+sortNameBtn.addEventListener('click', () => {
+    sortOrder.rate = null;
+    sortOrder.name = sortOrder.name === 'asc' ? 'desc' : 'asc';
+    sortNameBtn.classList.add('active');
+    sortRateBtn.classList.remove('active');
+    populateRatesTable(ratesSearch.value);
+});
+
+sortRateBtn.addEventListener('click', () => {
+    sortOrder.name = null;
+    sortOrder.rate = sortOrder.rate === 'asc' ? 'desc' : 'asc';
+    sortRateBtn.classList.add('active');
+    sortNameBtn.classList.remove('active');
+    populateRatesTable(ratesSearch.value);
 });
 
 // Init — fetch codes first, then rates

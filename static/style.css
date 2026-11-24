@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: #f0f4f8;
     color: #1a1a2e;
 }
@@ -25,8 +25,9 @@ header {
 .hero {
     background-color: #1a3a8f;
     text-align: center;
-    padding: 50px 20px 80px;
+    padding: 65px 0px 0px;
     color: #ffffff;
+    position: relative;
 }
 
 .hero h1 {
@@ -38,11 +39,12 @@ header {
 .hero p {
     font-size: 1rem;
     opacity: 0.85;
+    margin: 20px;
 }
 
 main {
     max-width: 860px;
-    margin: -50px auto 40px;
+    margin: -60px auto 40px;
     padding: 0 20px;
     position: relative;
 }
@@ -244,4 +246,221 @@ main {
     .swap-btn:hover {
         transform: rotate(270deg);
     }
+}
+
+.loader-screen {
+    position: fixed;
+    inset: 0;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 9999;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+    padding: 48px 52px 48px 52px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.loader-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.loader-logo {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #0a0f1e;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.loader-tagline {
+    font-size: 0.88rem;
+    color: #888;
+    letter-spacing: 0.5px;
+    margin-top: 6px;
+}
+
+.loader-bottom {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+}
+
+.loader-bar-wrap {
+    flex: 1;
+    height: 15px;
+    background: #f0f0f0;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.loader-bar {
+    height: 100%;
+    width: 0%;
+    background: #1a3a8f;
+    border-radius: 2px;
+    transition: width 0.15s ease;
+}
+
+.loader-percent {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    color: #0a0f1e;
+    font-weight: 500;
+    white-space: nowrap;
+    min-width: 40px;
+}
+
+.launch-btn {
+    display: none;
+    margin-top: 32px;
+    padding: 10px 28px;
+    background: transparent;
+    border: 1px solid #1a3a8f;
+    color: #0a0f1e;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    align-self: flex-end;
+}
+
+.launch-btn:hover {
+    background: #1a3a8f;
+    color: #ffffff;
+}
+
+.hero-curve {
+    line-height: 0;
+    margin-top: -2px;
+}
+
+.hero-curve svg {
+    display: block;
+    width: 100%;
+    height: 60px;
+}
+
+.rates-section {
+    margin-top: 40px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+.rates-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.rates-header h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a1a2e;
+    flex: 1;
+}
+
+.rates-header h2 span {
+    color: #1a3a8f;
+    font-weight: 500;
+}
+
+#rates-search {
+    padding: 8px 14px;
+    border: 1px solid #dde3ed;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    width: 200px;
+}
+
+.sort-btns {
+    display: flex;
+    gap: 8px;
+}
+
+.sort-btns button {
+    padding: 8px 14px;
+    border: 1px solid #dde3ed;
+    border-radius: 8px;
+    background: white;
+    font-size: 0.82rem;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.sort-btns button:hover,
+.sort-btns button.active {
+    background: #1a3a8f;
+    color: white;
+    border-color: #1a3a8f;
+}
+
+.rates-table-wrap {
+    overflow-x: auto;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#rates-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+#rates-table thead th {
+    text-align: left;
+    padding: 10px 14px;
+    color: #888;
+    font-weight: 500;
+    border-bottom: 1px solid #f0f4f8;
+    position: sticky;
+    top: 0;
+    background: white;
+}
+
+#rates-table tbody tr {
+    border-bottom: 1px solid #f7f9fc;
+    transition: background 0.15s;
+}
+
+#rates-table tbody tr:hover {
+    background: #f7f9fc;
+}
+
+#rates-table tbody td {
+    padding: 10px 14px;
+    color: #1a1a2e;
+}
+
+#rates-table tbody td:first-child {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+#rates-table tbody td:last-child {
+    font-weight: 600;
+    color: #1a3a8f;
 }

@@ -3,10 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>Kwik Exchange - Currency Converter</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
+    <div class="loader-screen" id="loader-screen">
+        <div class="loader-content">
+            <div class="loader-logo">Kwik Exchange</div>
+            <div class="loader-tagline">Live currency rates, instantly.</div>
+            <button class="launch-btn" id="launch-btn">Launch App</button>
+        </div>
+        <div class="loader-bottom" id="loader-bottom">
+            <div class="loader-bar-wrap">
+                <div class="loader-bar" id="loader-bar"></div>
+            </div>
+            <span class="loader-percent" id="loader-percent">0%</span>
+        </div>
+    </div>
+
 
     <header>
         <div class="logo">Kwik Exchange</div>
@@ -15,6 +30,12 @@
     <section class="hero">
         <h1 id="hero-title">Currency Converter</h1>
         <p>Check live foreign currency exchange rates</p>
+
+        <div class="hero-curve">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#f0f4f8"/>
+        </svg>
+</div>
     </section>
 
     <main>
@@ -36,7 +57,7 @@
             <div class="input-group">
                 <label>To</label>
                 <div class="input-row">
-                    <input type="number" id="to-amount" readonly>
+                    <input type="text" id="to-amount" readonly>
                     <div class="dropdown-trigger" id="to-trigger">
                         <img id="to-flag" src="" alt="">
                         <span id="to-code">EUR</span>
@@ -44,7 +65,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
         <div class="dropdown" id="dropdown">
@@ -55,6 +75,29 @@
         <div class="rate-info">
             <p id="rate-display"></p>
             <p id="last-updated"></p>
+        </div>
+
+        <div class="rates-section">
+            <div class="rates-header">
+                <h2>Exchange Rates <span id="rates-base-label">from USD</span></h2>
+                <input type="text" id="rates-search" placeholder="Filter currencies...">
+                <div class="sort-btns">
+                    <button id="sort-name">Name ↕</button>
+                    <button id="sort-rate">Rate ↕</button>
+                </div>
+            </div>
+            <div class="rates-table-wrap">
+                <table id="rates-table">
+                    <thead>
+                        <tr>
+                            <th>Currency</th>
+                            <th>Name</th>
+                            <th>Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rates-body"></tbody>
+                </table>
+            </div>
         </div>
 
         <p class="disclaimer">
