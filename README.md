@@ -1,34 +1,32 @@
-# Kwik Exchange 💱
+# Kwik Exchange 
 
 A live currency converter web application powered by the ExchangeRate-API. Built with Flask (Python) on the backend and vanilla HTML, CSS, and JavaScript on the frontend.
 
-![Kwik Exchange](https://i.imgur.com/placeholder.png)
-
 ---
 
-## 🌐 Live Demo
+## Live Demo
 
-- **Demo Video:** [Watch here](#) 
+- **Demo Video:** [Watch here](#)
 - **Deployed URL:** [Coming soon](#)
 
 ---
 
-## ✨ Features
+## Features
 
--  **Live currency conversion** — converts as you type, no button needed
--  **160+ currencies** supported with country flags
--  **Swap button** — instantly flip from/to currencies
--  **Searchable dropdowns** — filter currencies by name or code
--  **Exchange rates table** — view all rates from your selected base currency
--  **Sort and filter** — sort rates by name or value, filter by search
--  **Last updated timestamp** — shows when rates were last refreshed
--  **Loading screen** — smooth entry experience with progress bar
--  **Secure API key handling** — key stored server-side, never exposed to browser
--  **Responsive design** — works on mobile and desktop
+- **Live currency conversion** — converts as you type, no button needed
+- **160+ currencies** supported with country flags
+- **Swap button** — instantly flip from/to currencies
+- **Searchable dropdowns** — filter currencies by name or code
+- **Exchange rates table** — view all rates from your selected base currency
+- **Sort and filter** — sort rates by name or value, filter by search
+- **Last updated timestamp** — shows when rates were last refreshed
+- **Loading screen** — smooth entry experience with progress bar
+- **Secure API key handling** — key stored server-side, never exposed to browser
+- **Responsive design** — works on mobile and desktop
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
@@ -41,7 +39,7 @@ A live currency converter web application powered by the ExchangeRate-API. Built
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 kwik-exchange/
@@ -58,7 +56,7 @@ kwik-exchange/
 
 ---
 
-## 🚀 Running Locally
+## Running Locally
 
 ### Prerequisites
 - Python 3.x
@@ -95,19 +93,20 @@ python app.py
 ```
 
 **5. Open in browser**
+```
 http://127.0.0.1:5000
-
+```
 
 ---
 
-## 🌍 Deployment
+## Deployment
 
 The app is deployed across two web servers behind a load balancer.
 
 ### Infrastructure
-- **web-01:** `13.40.123.248`
-- **web-02:** `3.8.49.201`
-- **lb-01 (HAProxy):** `18.169.188.222`
+- **web-01:** `18.170.34.3`
+- **web-02:** `3.10.143.237`
+- **lb-01 (HAProxy):** `35.176.46.223`
 
 ### Steps (per server)
 
@@ -135,16 +134,16 @@ cd kwik-exchange
 nano .env
 ```
 Add:
-
+```
 EXCHANGE_RATE_API_KEY=your_api_key_here
-
+```
 
 **5. Set up Gunicorn as a systemd service**
 ```bash
 sudo nano /etc/systemd/system/kwik-exchange.service
 ```
 Add:
-
+```
 [Unit]
 Description=Kwik Exchange Flask App
 After=network.target
@@ -157,7 +156,7 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
-
+```
 Enable and start:
 ```bash
 sudo systemctl daemon-reload
@@ -200,7 +199,7 @@ HAProxy is configured to distribute traffic between web-01 and web-02 using roun
 
 ---
 
-## 🔌 API Reference
+## API Reference
 
 **Provider:** [ExchangeRate-API](https://www.exchangerate-api.com)
 
@@ -216,7 +215,7 @@ HAProxy is configured to distribute traffic between web-01 and web-02 using roun
 
 ---
 
-## 🔐 Security
+## Security
 
 - API key stored in `.env` — excluded from version control via `.gitignore`
 - `.env` created manually on each server after deployment
@@ -224,13 +223,13 @@ HAProxy is configured to distribute traffic between web-01 and web-02 using roun
 
 ---
 
-## ⚠️ Disclaimer
+## Disclaimer
 
 Exchange rates are sourced from ExchangeRate-API and reflect mid-market rates. Rates are updated every 24 hours and are for informational purposes only. These rates may differ from those offered by banks or money transfer services.
 
 ---
 
-## 👏 Credits
+## Credits
 
 - Exchange rates: [ExchangeRate-API](https://www.exchangerate-api.com)
 - Country flags: [FlagCDN](https://flagcdn.com)
@@ -238,7 +237,7 @@ Exchange rates are sourced from ExchangeRate-API and reflect mid-market rates. R
 
 ---
 
-## 👤 Author
+## Author
 
 **Adedotun Taiwo**
 - GitHub: [@taiwodotunx1](https://github.com/taiwodotunx1)
